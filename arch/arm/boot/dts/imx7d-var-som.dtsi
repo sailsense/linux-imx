@@ -543,7 +543,9 @@
 		pinctrl_hog_1: hoggrp-1 {
 			fsl,pins = <
 				MX7D_PAD_GPIO1_IO14__GPIO1_IO14		0x80000000  /* bt reg on */
-				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30	0x80000000  /* capacitive touch irq */
+				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30	0x59  /* /MDM_RST */
+				MX7D_PAD_EPDC_DATA04__GPIO2_IO4		0x59  /* GPIO2_4 */
+				MX7D_PAD_EPDC_DATA05__GPIO2_IO5		0x59  /* GPIO2_5 */
 				MX7D_PAD_SD2_RESET_B__GPIO5_IO11	0x59  /* ethphy0 reset */
 				MX7D_PAD_UART2_TX_DATA__GPIO4_IO3	0x59  /* ethphy1 reset */
 				MX7D_PAD_LCD_RESET__GPIO3_IO4		0x59  /* MDM_DTR */
@@ -831,6 +833,22 @@
 			>;
 		};
 
+		pinctrl_uart5: uart5grp {
+			fsl,pins = <
+				MX7D_PAD_I2C4_SDA__UART5_DCE_TX		0x79
+				MX7D_PAD_I2C4_SCL__UART5_DCE_RX		0x79
+			>;
+		};
+
+		pinctrl_uart6: uart6grp {
+			fsl,pins = <
+				MX7D_PAD_EPDC_DATA09__UART6_DCE_TX		0x79
+				MX7D_PAD_EPDC_DATA08__UART6_DCE_RX		0x79
+				MX7D_PAD_EPDC_DATA11__UART6_DCE_CTS 0x79
+				MX7D_PAD_EPDC_DATA10__UART6_DCE_RTS 0x79
+			>;
+		};
+
 		pinctrl_usdhc1_gpio: usdhc1_gpiogrp {
 			fsl,pins = <
 				MX7D_PAD_SD1_CD_B__GPIO5_IO0		0x59 /* CD */
@@ -1070,8 +1088,29 @@
 	pinctrl-0 = <&pinctrl_uart3>;
 	assigned-clocks = <&clks IMX7D_UART3_ROOT_SRC>;
 	assigned-clock-parents = <&clks IMX7D_PLL_SYS_MAIN_240M_CLK>;
-	uart-has-rtscts;
+	fsl,uart-has-rtscts;
 	status = "okay";
+};
+
+&uart5 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart5>;
+	assigned-clocks = <&clks IMX7D_UART5_ROOT_SRC>;
+	assigned-clock-parents = <&clks IMX7D_PLL_SYS_MAIN_240M_CLK>;
+	status = "okay";
+};
+
+&uart6 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart6>;
+	assigned-clocks = <&clks IMX7D_UART6_ROOT_SRC>;
+	assigned-clock-parents = <&clks IMX7D_PLL_SYS_MAIN_240M_CLK>;
+	status = "okay";
+};
+
+&usbh {
+	status = "okay";
+	vbus-supply = <&reg_hsic_hub_pwr_on>;
 };
 
 &usbotg1 {
