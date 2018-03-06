@@ -483,13 +483,6 @@
 		clock-names = "mclk";
 		status = "okay";
 	};
-};
-
-	/* DS1337 RTC module */
-	rtc@68 {
-		compatible = "dallas,ds1337";
-		reg = <0x68>;
-	};
 
 	ov5640_mipi: ov5640_mipi@3c {
 		compatible = "ovti,ov5640_mipi";
@@ -1186,6 +1179,7 @@
 &snvs_rtc {
 	status = "disabled";
 };
+<<<<<<< HEAD
 
 &snvs_pwrkey {
 	status = "okay";
@@ -1194,3 +1188,5 @@
 &snvs_poweroff {
 	status = "okay";
 };
+=======
+>>>>>>> 7f0265abf399 (Remove DS1307 RTC module from device tree)
