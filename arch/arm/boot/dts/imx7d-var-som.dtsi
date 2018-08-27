@@ -158,15 +158,6 @@
 			status = "okay";
 		};
 
-		reg_hsic_hub_pwr_on: reg_hsic_hub_pwr_on {
-			compatible = "regulator-fixed";
-			regulator-name = "hsic_hub_pwr_on";
-			gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
-			enable-active-high;
-			regulator-always-on;
-			status = "okay";
-		};
-
 		reg_hsic_hub_connect: reg_hsic_hub_connect {
 			compatible = "regulator-fixed";
 			regulator-name = "reg_hsic_hub_connect";
@@ -174,6 +165,17 @@
 			enable-active-high;
 			regulator-always-on;
 			status = "okay";
+	};
+
+	gpio-leds {
+		compatible = "gpio-leds";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_gpio_leds>;
+
+		power {
+			label = "Power";
+			gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
 		};
 	};
 };
@@ -523,9 +525,14 @@
 				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30	0x80000000  /* capacitive touch irq */
 				MX7D_PAD_SD2_RESET_B__GPIO5_IO11	0x59  /* ethphy0 reset */
 				MX7D_PAD_UART2_TX_DATA__GPIO4_IO3	0x59  /* ethphy1 reset */
+<<<<<<< HEAD
 				MX7D_PAD_GPIO1_IO10__GPIO1_IO10		0x59  /* hsic hub reset */
 				MX7D_PAD_GPIO1_IO12__GPIO1_IO12		0x59  /* hsic hub connect */
 				MX7D_PAD_GPIO1_IO13__GPIO1_IO13		0x59  /* LED */
+=======
+				MX7D_PAD_GPIO1_IO10__GPIO1_IO10		0x0C  /* SOM_SIG1 */
+				MX7D_PAD_GPIO1_IO13__GPIO1_IO13		0x0C  /* EN_3V3_HC_SOM, pulled down externally */
+>>>>>>> 743a5d30327f (Remove unused leds and iomux configurations from KDT)
 				MX7D_PAD_SD1_WP__CCM_CLKO2		0xb0  /* camera clock */
 			>;
 		};
