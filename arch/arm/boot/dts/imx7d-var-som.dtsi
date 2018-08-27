@@ -158,19 +158,17 @@
 			status = "okay";
 		};
 
-		reg_hsic_hub_connect: reg_hsic_hub_connect {
-			compatible = "regulator-fixed";
-			regulator-name = "reg_hsic_hub_connect";
-			gpio = <&gpio1 12 GPIO_ACTIVE_HIGH>;
-			enable-active-high;
-			regulator-always-on;
-			status = "okay";
 	};
 
 	gpio-leds {
 		compatible = "gpio-leds";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_gpio_leds>;
+
+		blue {
+			label = "Blue";
+			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
+		};
 
 		power {
 			label = "Power";
@@ -1051,11 +1049,6 @@
 	assigned-clock-parents = <&clks IMX7D_PLL_SYS_MAIN_240M_CLK>;
 	uart-has-rtscts;
 	status = "okay";
-};
-
-&usbh {
-	status = "okay";
-	vbus-supply = <&reg_hsic_hub_pwr_on>;
 };
 
 &usbotg1 {
