@@ -405,6 +405,7 @@
 		clock-names = "mclk";
 		status = "okay";
 	};
+};
 
 &i2c3 {
 	clock-frequency = <100000>;
