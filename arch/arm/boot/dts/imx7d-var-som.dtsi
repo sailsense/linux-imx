@@ -461,6 +461,7 @@
 		clock-names = "mclk";
 		status = "okay";
 	};
+};
 
 	/* DS1337 RTC module */
 	rtc@68 {
