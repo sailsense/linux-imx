@@ -841,9 +841,11 @@
 	pinctrl-1 = <&pinctrl_usdhc2_100mhz>, <&pinctrl_wlan>;
 	pinctrl-2 = <&pinctrl_usdhc2_200mhz>, <&pinctrl_wlan>;
 	pinctrl-3 = <&pinctrl_usdhc2_sleep>, <&pinctrl_wlan_sleep>;
+  enable-sdio-wakeup;
 	keep-power-in-suspend;
 	non-removable;
 	pm-ignore-notify;
+  wifi-host;
 	vmmc-supply = <&wlreg_on>;
 	status = "okay";
 };
