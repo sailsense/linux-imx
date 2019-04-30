@@ -755,7 +755,7 @@
 
 		pinctrl_wlan: wlangrp {
 			fsl,pins = <
-				MX7D_PAD_GPIO1_IO04__GPIO1_IO4		0x09 /* WL_REG_ON */
+				MX7D_PAD_GPIO1_IO04__GPIO1_IO4		0x59 /* WL_REG_ON */
 				MX7D_PAD_GPIO1_IO03__OSC32K_32K_OUT	0xb0 /* WIFI Slow clock */
 			>;
 		};
