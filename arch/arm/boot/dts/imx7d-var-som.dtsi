@@ -941,11 +941,6 @@
 	status = "okay";
 };
 
-&usbh {
-	status = "okay";
-	vbus-supply = <&reg_hsic_hub_pwr_on>;
-};
-
 &usbotg1 {
 	vbus-supply = <&reg_usb_otg1_vbus>;
 	dr_mode = "host";
