@@ -179,7 +179,7 @@
 		bslGPIO {
 			label = "zigbee_bsl";
 			gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
+			default-state = "off";
 		};
 	};
 };
