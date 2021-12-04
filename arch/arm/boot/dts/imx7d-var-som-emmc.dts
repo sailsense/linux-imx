@@ -155,14 +155,15 @@
 
 		pinctrl_gpio_cc2652: gpio_ledsgrp {
 			fsl,pins = <
-				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30		0x32 /* Reset */
-				MX7D_PAD_EPDC_BDR1__GPIO2_IO29		    0x32 /* BSL */
+				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30		0x1 // Reset
+				MX7D_PAD_EPDC_BDR1__GPIO2_IO29		    0x1 // BSL
 			>;
 		};
     };
 };
 
 /delete-node/ &{/gpio-leds};
+
 
 / {
 	gpios_cc2652 {
@@ -171,15 +172,15 @@
 		pinctrl-0 = <&pinctrl_gpio_cc2652>;
 
 		resetGPIO {
-			label = "zigbee_reset";
-			gpios = <&gpio2 30 GPIO_ACTIVE_LOW>;
-			default-state = "on";
+			label = "zigbee_nreset";
+			gpios = <&gpio2 30 GPIO_ACTIVE_HIGH>;
+			default-state = "off";//reset state
 		};
 
 		bslGPIO {
 			label = "zigbee_bsl";
 			gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
-			default-state = "off";
+			default-state = "on";
 		};
 	};
 };
