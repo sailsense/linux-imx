@@ -153,7 +153,7 @@
 			>;
 		};
 
-		pinctrl_gpio_cc2652: gpio_ledsgrp {
+		pinctrl_gpio_cc2652: gpio_zigbeegrp {
 			fsl,pins = <
 				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30		0x1 // Reset
 				MX7D_PAD_EPDC_BDR1__GPIO2_IO29		    0x1 // BSL
@@ -165,24 +165,24 @@
 /delete-node/ &{/gpio-leds};
 
 
-/ {
-	gpios_cc2652 {
-		compatible = "gpio-leds";
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_gpio_cc2652>;
+&gpio2 {
+    // Define GPIO2_30 as an input with pin control
+    zigbee_nreset {
+        gpios = <&gpio2 30 GPIO_ACTIVE_HIGH>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_gpio_cc2652>;
+        input;
+        line-name = "zigbee_nreset";  // Name visible in sysfs
+    };
 
-		resetGPIO {
-			label = "zigbee_nreset";
-			gpios = <&gpio2 30 GPIO_ACTIVE_HIGH>;
-			default-state = "off";//reset state
-		};
-
-		bslGPIO {
-			label = "zigbee_bsl";
-			gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
-		};
-	};
+    // Define GPIO2_29 as an output, initially set to high with pin control
+    zigbee_bsl {
+        gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_gpio_cc2652>;
+        output-high;  // Set initial state to high
+        line-name = "zigbee_bsl";  // Name visible in sysfs
+    };
 };
 
 
