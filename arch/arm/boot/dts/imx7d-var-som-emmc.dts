@@ -168,6 +168,7 @@
 &gpio2 {
     // Define GPIO2_30 as an input with pin control
     zigbee_nreset {
+        gpio-hog;
         gpios = <&gpio2 30 GPIO_ACTIVE_HIGH>;
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_gpio_cc2652>;
@@ -177,6 +178,7 @@
 
     // Define GPIO2_29 as an output, initially set to high with pin control
     zigbee_bsl {
+    	gpio-hog;
         gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_gpio_cc2652>;
