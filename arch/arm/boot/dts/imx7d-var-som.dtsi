@@ -681,8 +681,8 @@
 			fsl,pins = <
 				MX7D_PAD_LCD_ENABLE__UART2_DCE_TX	0x79
 				MX7D_PAD_LCD_CLK__UART2_DCE_RX		0x79
-				MX7D_PAD_LCD_VSYNC__UART2_DCE_CTS	0x79
-				MX7D_PAD_LCD_HSYNC__UART2_DCE_RTS	0x79
+				MX7D_PAD_LCD_VSYNC__GPIO3_IO3		0x00
+				MX7D_PAD_LCD_HSYNC__GPIO3_IO2		0x00
 			>;
 		};
 
@@ -912,7 +912,6 @@
 	pinctrl-0 = <&pinctrl_uart2>;
 	assigned-clocks = <&clks IMX7D_UART2_ROOT_SRC>;
 	assigned-clock-parents = <&clks IMX7D_OSC_24M_CLK>;
-	uart-has-rtscts;
 	status = "okay";
 };
 
